@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus Legal AI - Executive Gold Edition</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="/eel.js"></script>
+</head>
+<body>
+    <!-- TELA DE LOGIN GLASSMORPHISM -->
+    <div id="login-screen" class="login-container">
+        <div class="glass-card login-card">
+            <div class="brand-header">
+                <span class="logo-icon">⚡</span>
+                <h1 class="gold-gradient-text">NEXUS LEGAL AI</h1>
+                <p class="subtitle">Core Jurídico Previdenciário • Gold Edition</p>
+            </div>
+            
+            <form id="login-form" onsubmit="realizarLogin(event)">
+                <div class="input-group">
+                    <label>Usuário Corporativo</label>
+                    <input type="text" id="user-input" placeholder="Digite seu usuário..." required>
+                </div>
+                <div class="input-group">
+                    <label>Senha de Acesso</label>
+                    <input type="password" id="pass-input" placeholder="••••••••" required>
+                </div>
+                <button type="submit" id="btn-login" class="btn-gold-glow">
+                    ENTRAR NO SISTEMA
+                </button>
+            </form>
+            <div id="login-status" class="status-msg"></div>
+        </div>
+    </div>
+
+    <!-- PAINEL PRINCIPAL (APÓS AUTENTICAÇÃO) -->
+    <div id="app-screen" class="app-container hidden">
+        <header class="top-bar glass-card">
+            <div class="brand">
+                <span class="logo-icon">⚡</span>
+                <span class="gold-gradient-text title">NEXUS LEGAL AI</span>
+            </div>
+            <div class="user-badge">
+                <span id="user-info">Carregando...</span>
+                <span class="badge-active">● LICENÇA ATIVA</span>
+            </div>
+        </header>
+
+        <main class="content-area">
+            <!-- NAVEGAÇÃO POR ABAS -->
+            <nav class="nav-tabs">
+                <button class="tab-btn active" onclick="switchTab('tab-organizador')">🧠 1. Triagem & PJe</button>
+                <button class="tab-btn" onclick="switchTab('tab-minuta')">✍️ 2. Minuta de Fatos</button>
+                <button class="tab-btn" onclick="switchTab('tab-validador')">🛡️ 3. Admissibilidade</button>
+            </nav>
+
+            <!-- ABA 1: TRIAGEM -->
+            <section id="tab-organizador" class="tab-content active">
+                <div class="glass-card panel">
+                    <div class="form-row">
+                        <label>⚖️ Ação Previdenciária Alvo:</label>
+                        <select id="tipo-processo" class="gold-select">
+                            <option value="Aposentadoria Rural por Idade">Aposentadoria Rural por Idade</option>
+                            <option value="Pensão por Morte Rural">Pensão por Morte Rural</option>
+                            <option value="Salário-Maternidade Rural">Salário-Maternidade Rural</option>
+                        </select>
+                    </div>
+
+                    <div class="folder-drop-zone" id="drop-zone" onclick="selecionarPasta()">
+                        <div class="folder-icon">📁</div>
+                        <div id="folder-path-display">Clique para selecionar a pasta do cliente</div>
+                        <span class="sub-text">Os documentos organizados serão gravados no local de origem</span>
+                    </div>
+
+                    <button class="btn-gold-glow btn-action" onclick="executarTriagem()">
+                        ⚡ EXECUTAR TRIAGEM E FILTRAGEM RURAL DE PROVAS
+                    </button>
+
+                    <div class="progress-bar-container">
+                        <div id="progress-bar" class="progress-bar-fill"></div>
+                    </div>
+
+                    <div class="terminal-log" id="log-triagem">
+                        <span class="system-msg">> Sistema inicializado. Aguardando seleção de pasta do cliente...</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ABA 2: MINUTA -->
+            <section id="tab-minuta" class="tab-content">
+                <div class="glass-card panel">
+                    <button class="btn-gold-glow btn-action" onclick="gerarMinuta()">
+                        ✍️ GERAR HISTÓRICO DOS FATOS E LISTA DE PROVAS (.DOCX)
+                    </button>
+                    <textarea id="text-minuta" readonly placeholder="A minuta de fatos gerada pela IA aparecerá aqui..."></textarea>
+                </div>
+            </section>
+
+            <!-- ABA 3: ADMISSIBILIDADE -->
+            <section id="tab-validador" class="tab-content">
+                <div class="glass-card panel">
+                    <button class="btn-gold-glow btn-action" onclick="validarAdmissibilidade()">
+                        🔍 DIAGNOSTICAR ADMISSIBILIDADE DO PROTOCOLO
+                    </button>
+                    <div class="validator-grid">
+                        <div class="val-box" id="val-check"></div>
+                        <div class="val-box" id="val-score"></div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>

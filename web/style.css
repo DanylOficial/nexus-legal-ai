@@ -1,0 +1,200 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+:root {
+    --bg-dark: #090A0F;
+    --card-bg: rgba(18, 20, 28, 0.75);
+    --gold: #D4AF37;
+    --gold-hover: #F3C63F;
+    --gold-glow: rgba(212, 175, 55, 0.35);
+    --border-color: rgba(212, 175, 55, 0.25);
+    --text-white: #FFFFFF;
+    --text-muted: #8E95A5;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-white);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+}
+
+/* TELA DE LOGIN GLASSMORPHISM */
+.login-container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle at center, #1A1D28 0%, #090A0F 100%);
+}
+
+.glass-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(16px);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 35px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+}
+
+.login-card {
+    width: 400px;
+    text-align: center;
+    animation: fadeInScale 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.gold-gradient-text {
+    background: linear-gradient(135deg, #FFF 0%, #D4AF37 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+}
+
+.input-group {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 12px;
+    color: var(--gold);
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+input[type="text"], input[type="password"], .gold-select {
+    width: 100%;
+    padding: 14px;
+    background: rgba(10, 12, 18, 0.8);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    color: #FFF;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+input:focus, .gold-select:focus {
+    border-color: var(--gold);
+    box-shadow: 0 0 15px var(--gold-glow);
+}
+
+.btn-gold-glow {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, #D4AF37 0%, #AA8A2E 100%);
+    border: none;
+    border-radius: 10px;
+    color: #000;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-gold-glow:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px var(--gold-glow);
+    background: linear-gradient(135deg, #F3C63F 0%, #D4AF37 100%);
+}
+
+/* PAINEL PRINCIPAL */
+.app-container {
+    width: 95vw;
+    height: 92vh;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+}
+
+.nav-tabs {
+    display: flex;
+    gap: 10px;
+}
+
+.tab-btn {
+    padding: 12px 24px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    color: var(--text-white);
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.tab-btn.active, .tab-btn:hover {
+    background: var(--gold);
+    color: #000;
+    font-weight: 600;
+}
+
+.tab-content { display: none; }
+.tab-content.active { display: block; animation: fadeIn 0.4s ease-in-out; }
+
+.folder-drop-zone {
+    border: 2px dashed var(--border-color);
+    border-radius: 15px;
+    padding: 30px;
+    text-align: center;
+    cursor: pointer;
+    margin: 20px 0;
+    transition: all 0.3s;
+}
+
+.folder-drop-zone:hover {
+    border-color: var(--gold);
+    background: rgba(212, 175, 55, 0.05);
+}
+
+.terminal-log {
+    background: #050608;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 15px;
+    height: 220px;
+    overflow-y: auto;
+    font-family: monospace;
+    font-size: 13px;
+    color: var(--gold);
+    margin-top: 15px;
+}
+
+textarea {
+    width: 100%;
+    height: 380px;
+    background: #050608;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 15px;
+    color: #FFF;
+    margin-top: 15px;
+    resize: none;
+}
+
+.hidden { display: none !important; }
+
+@keyframes fadeInScale {
+    from { opacity: 0; transform: scale(0.92); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
