@@ -6,10 +6,12 @@ import base64
 from groq import Groq
 from pypdf import PdfWriter, PdfReader
 
-# Sua Chave de API do Groq
-GROQ_API_KEY = "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"
 
-client = Groq(api_key=GROQ_API_KEY)
+# Sua Chave de API do Groq
+GROQ_API_KEY = os.getenv("GROQ_API_KEY", "")
+
+if GROQ_API_KEY:
+    client = Groq(api_key=GROQ_API_KEY)
 
 PASTA_ENTRADA = "./PARA_PROCESSAR"
 PASTA_SAIDA = "./PROCESSADOS_PRONTOS"
