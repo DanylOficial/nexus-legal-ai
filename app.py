@@ -38,7 +38,7 @@ class AppAdvocacia(ctk.CTk):
         self.configure(fg_color=COLOR_BG)
 
         self.pasta_selecionada = ""
-        self.api_key = ctk.StringVar(value="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")
+        self.api_key = ctk.StringVar(value="")
         self.tipo_processo = ctk.StringVar(value="Aposentadoria Rural por Idade")
 
         self.setup_header()
